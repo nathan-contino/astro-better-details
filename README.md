@@ -10,21 +10,32 @@ npm install astro-better-details
 
 ## Basic usage
 
+Pass a plain string via the `title` prop:
+
 ```mdx
 import Details from 'astro-better-details/Details.astro';
 
-<Details>
-  <span slot="title">What is this?</span>
+<Details title="What is this?">
   This is the expanded content. It can contain any Markdown or MDX.
 </Details>
 ```
 
-The `title` slot holds the always-visible summary label. The default slot holds the body content shown when expanded.
+Use the `title` slot when the header needs inline markup -- code, links, or components:
+
+```mdx
+<Details>
+  <span slot="title">Why use <code>astro-better-details</code>?</span>
+  This is the expanded content. It can contain any Markdown or MDX.
+</Details>
+```
+
+The `title` slot takes precedence over the `title` prop if both are provided. The default slot holds the body content shown when expanded.
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `title` | `string` | -- | Plain-text header label; use the `title` slot for inline markup |
 | `open` | `boolean` | `false` | Render the component already expanded |
 | `class` | `string` | -- | Additional CSS class(es) applied to the `<details>` element |
 
@@ -32,10 +43,8 @@ The `title` slot holds the always-visible summary label. The default slot holds 
 
 | Slot | Description |
 |------|-------------|
-| `title` (named) | Label shown in the clickable summary bar |
+| `title` (named) | Header content with inline markup; takes precedence over the `title` prop |
 | default | Body content, shown when expanded |
-
-The title slot accepts any inline content -- plain text, backtick code, links, or JSX components.
 
 ## Theming
 

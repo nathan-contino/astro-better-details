@@ -1,14 +1,14 @@
 ---
-interface Props {
-  open?: boolean;
-  class?: string;
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'details'> {
   title?: string;
 }
 
-const { open, class: cls, title } = Astro.props;
+const { open, class: cls, title, ...rest } = Astro.props;
 ---
 
-<details class:list={['abt-details', cls]} open={open}>
+<details class:list={['abt-details', cls]} open={open} {...rest}>
   <summary class="abt-details-summary">
     <span class="abt-details-title">{title}<slot name="title" /></span>
     <svg class="abt-details-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

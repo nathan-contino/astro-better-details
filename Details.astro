@@ -38,13 +38,15 @@ const { open, class: cls } = Astro.props;
     background: var(--abt-details-summary-bg, #f9fafb);
     font-weight: 500;
     user-select: none;
+    /* always present so open/close is a color-only change -- no layout shift */
+    border-bottom: 1px solid transparent;
   }
 
   .abt-details-summary::-webkit-details-marker { display: none; }
   .abt-details-summary::marker { display: none; }
 
   .abt-details[open] > .abt-details-summary {
-    border-bottom: 1px solid var(--abt-details-border, #d1d5db);
+    border-bottom-color: var(--abt-details-separator, var(--abt-details-border, #d1d5db));
   }
 
   .abt-details-title {

@@ -1,6 +1,6 @@
 {
   "name": "astro-better-details",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Expandable details/disclosure component for Astro",
   "author": "Nathan Contino <ncontino@lambdalatitudinarians.org>",
